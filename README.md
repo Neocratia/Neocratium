@@ -1,5 +1,3 @@
-# neocratium
-
 ![Neocratium by Neocratia](https://raw.githubusercontent.com/Neocratia/neocratium/master/images/neocratium%20logo%20light%20background.png "Neocratium by Neocratia")
 
 Neocratium enables communities of all sizes — even non-political ones — to debate and make democratic decisions.
