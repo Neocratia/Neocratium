@@ -1,0 +1,7 @@
+<div class="container header-spacer" *ngIf="decision | async as d">
+	<h1> {{ d.title }}</h1>
+	<h3>{{ d.description }}</h3>
+
+	<app-vote-decision [decisionId]="_decisionId" [userId]="_userId"></app-vote-decision>
+
+</div>

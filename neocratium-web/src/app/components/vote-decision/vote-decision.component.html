@@ -1,0 +1,29 @@
+<div>
+	<h1>Make your decision</h1>
+	<mat-button-toggle-group #vote="matButtonToggleGroup" [(ngModel)]="userVote" (change)="voteHandler(vote.value)">
+		<mat-button-toggle *ngFor="let vote of votesOptions" [value]="vote">
+			{{ vote | uppercase }}
+		</mat-button-toggle>
+	</mat-button-toggle-group>
+	<a mat-raised-button (click)="delegateHandler()" color="primary">Delegate my decision</a>
+</div>
+
+<div>
+	<h1>Decision Results:</h1>
+
+	<h3>Yes: {{ (avgYes | async) | percent }}</h3>
+	<h3>No: {{ (avgNo | async) | percent }}</h3>
+	<h3>Blank: {{ (avgBlank | async) | percent }}</h3>
+</div>
+
+<div>
+	<h2>Votes:</h2>
+	<div *ngFor="let vote of votes | async">
+		<div *ngIf="!vote.delegated">
+			{{ vote.userId }} voted <strong> {{ vote.value }} </strong>
+		</div>
+		<div *ngIf="vote.delegated">
+			{{ vote.userId }} delegates in {{ vote.representative }} who voted <strong> {{ vote.value }} </strong>
+		</div>
+	</div>
+</div>

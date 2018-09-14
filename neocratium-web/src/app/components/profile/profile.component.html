@@ -1,0 +1,33 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+
+</div>
+
+<ng-template #guest>
+
+	<h3>Welcome to Neocratium</h3>
+	<p>Login to get started... </p>
+
+	<button mat-raised-button color="primary" (click)="auth.googleLogin()" class="display-fresh">
+		<i class="fa fa-google"></i> Connect with Google
+	</button>
+
+	<button mat-raised-button color="primary" (click)="auth.facebookLogin()" class="display-fresh">
+		<i class="fa fa-google"></i> Connect with Facebook
+	</button>
+
+
+</ng-template>
+
+<ng-template #authenticated>
+	<div *ngIf="auth.user | async as user">
+		<h3>Bienvenido {{user.displayName}},</h3>
+		<img [src]="user.photoURL">
+		<p>{{user.email}}</p>
+		<p>{{user.uid}}</p>
+	</div>
+
+	<button mat-raised-button color="primary" routerLink="/decisions" class="display-fresh">¡Go and take Decisions!</button>
+
+	<button mat-raised-button color="accent" (click)="auth.signOut()" class="display-fresh">Logout</button>
+
+</ng-template>
