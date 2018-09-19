@@ -1,12 +1,12 @@
-<mat-toolbar color="primary">
+<mat-toolbar>
 	<mat-toolbar-row>
-		<button mat-icon-button routerLink="decisions">
+		<button mat-icon-button (click)="openSideNav($event)">
 			<mat-icon class="material-icons md-36">menu</mat-icon>
 		</button>
-		<span>{{navTitle}}</span>
 		<span fxFlex></span>
-		<button mat-icon-button routerLink="/">
+		<img src="/assets/img/neocratium-logo-light-background.png" class="logo-img">
+		<!-- <button mat-icon-button routerLink="/">
 			<mat-icon class="material-icons md-36">person</mat-icon>
-		</button>
+		</button> -->
 	</mat-toolbar-row>
 </mat-toolbar>

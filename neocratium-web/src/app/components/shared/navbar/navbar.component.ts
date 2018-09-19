@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
 	selector: 'app-navbar',
@@ -6,16 +7,20 @@ import { Component, OnInit, Input } from '@angular/core';
 	styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
+	@Input()
+	navTitle;
 
-	@Input() navTitle;
+	@Output() openNav = new EventEmitter();
 
-	constructor() { }
+	constructor() {}
 
-	ngOnInit() {
+	openSideNav(e: any) {
+		this.openNav.emit(e);
 	}
+
+	ngOnInit() {}
 
 	onClick() {
 		//
 	}
-
 }

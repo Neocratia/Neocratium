@@ -39,6 +39,11 @@ export class AuthService {
 		return this.oAuthLogin(provider);
 	}
 
+	twitterLogin() {
+		const provider = new firebase.auth.TwitterAuthProvider();
+		return this.oAuthLogin(provider);
+	}
+
 	signOut() {
 		this.afAuth.auth.signOut().then(() => {
 			this.router.navigate(['/']);

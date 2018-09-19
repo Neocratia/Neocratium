@@ -3,6 +3,8 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import 'rxjs/add/operator/map';
 import { Vote } from '../models/vote.model';
 import 'rxjs/add/operator/take';
+import { Observable } from 'rxjs';
+import * as firebase from 'firebase';
 
 @Injectable({
 	providedIn: 'root'
@@ -30,6 +32,11 @@ export class VoteService {
 				}
 			});
 		});
+	}
+
+	getUserName(userId: string) {
+		const userRef = this.afs.collection('users', ref => ref.where('uid', '==', userId));
+		return userRef.valueChanges();
 	}
 
 	getDelegatedVote(userId, decisionId) {

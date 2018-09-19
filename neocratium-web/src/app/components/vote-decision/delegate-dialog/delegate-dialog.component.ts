@@ -18,8 +18,8 @@ export class DelegateDialogComponent implements OnInit {
 		private userService: AuthService
 	) {
 		this.title = data.title;
-		this.userService.getUsers().subscribe(decisions => {
-			this.usersToDelegate = decisions;
+		this.userService.getUsers().subscribe(users => {
+			this.usersToDelegate = users;
 		});
 	}
 

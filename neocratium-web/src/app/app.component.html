@@ -1,5 +1,19 @@
-<app-navbar [navTitle]="title" class="header"></app-navbar>
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="over">
+		<app-profile></app-profile>
+	</mat-sidenav>
 
-<div class="header-spacer"></div>
+	<mat-sidenav-content>
 
-<router-outlet></router-outlet>
+		<app-navbar [navTitle]="title" (openNav)="sideNav.toggle()" class="header"></app-navbar>
+
+		<div class="header-spacer"></div>
+
+		<router-outlet></router-outlet>
+
+		<div class="header-spacer"></div>
+
+		<app-navmenu class="footer"></app-navmenu>
+	</mat-sidenav-content>
+
+</mat-sidenav-container>

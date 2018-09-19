@@ -26,8 +26,14 @@ import {
 	MatNativeDateModule,
 	MatSnackBarModule,
 	MatProgressSpinnerModule,
-	MatDialogModule
+	MatDialogModule,
+	MatGridListModule,
+	MatExpansionModule,
+	MatSidenavModule
 } from '@angular/material';
+
+// Disqus //
+import { DisqusModule } from 'ngx-disqus';
 
 // Neocratium Components //
 import { AppComponent } from './app.component';
@@ -44,6 +50,9 @@ import { DecisionsService } from './services/decisions.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateComponent } from './components/decisions/create/create.component';
 import { AuthService } from './services/core/auth.service';
+import { NavmenuComponent } from './components/shared/navmenu/navmenu.component';
+import { ForumComponent } from './components/forum/forum.component';
+import { VoteNamePipe } from './pipes/vote-name.pipe';
 
 @NgModule({
 	declarations: [
@@ -54,7 +63,10 @@ import { AuthService } from './services/core/auth.service';
 		CreateComponent,
 		VoteComponent,
 		VoteDecisionComponent,
-		DelegateDialogComponent
+		DelegateDialogComponent,
+		NavmenuComponent,
+		ForumComponent,
+		VoteNamePipe
 	],
 	imports: [
 		// Angular //
@@ -83,7 +95,12 @@ import { AuthService } from './services/core/auth.service';
 		MatNativeDateModule,
 		MatSnackBarModule,
 		MatProgressSpinnerModule,
-		MatDialogModule
+		MatDialogModule,
+		MatGridListModule,
+		MatExpansionModule,
+		MatSidenavModule,
+		// Disqus //
+		DisqusModule.forRoot('neocratium')
 	],
 	exports: [
 		MatButtonModule,

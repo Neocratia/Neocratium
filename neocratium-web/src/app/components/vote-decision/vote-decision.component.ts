@@ -23,11 +23,15 @@ export class VoteDecisionComponent implements OnInit {
 	public userVote = '';
 	public votesOptions = ['yes', 'no', 'blank'];
 
-	constructor(private voteService: VoteService, private dialog: MatDialog) {}
+	constructor(public voteService: VoteService, private dialog: MatDialog) {}
 
 	ngOnInit() {
 		this.votes = this.voteService.getDecisionVotes(this.decisionId);
 		this.getResults();
+	}
+
+	getName(value) {
+		return this.voteService.getUserName(value).subscribe();
 	}
 
 	getResults() {
@@ -88,14 +92,17 @@ export class VoteDecisionComponent implements OnInit {
 			title: `Delegate decision ${this.decisionId}`
 		};
 		const dialogRef = this.dialog.open(DelegateDialogComponent, dialogConfig);
-		dialogRef.afterClosed().take(1).subscribe(result => {
-			if (result) {
-				this.voteService.getUserVote(result.uid, this.decisionId).then(res => {
-					this.voteService.delegateVote(this.userId, this.decisionId, res, true, result.uid);
-				});
-			} else {
-				console.log('The dialog was closed with no selection');
-			}
-		});
+		dialogRef
+			.afterClosed()
+			.take(1)
+			.subscribe(result => {
+				if (result) {
+					this.voteService.getUserVote(result.uid, this.decisionId).then(res => {
+						this.voteService.delegateVote(this.userId, this.decisionId, res, true, result.uid);
+					});
+				} else {
+					console.log('The dialog was closed with no selection');
+				}
+			});
 	}
 }

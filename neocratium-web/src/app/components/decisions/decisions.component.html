@@ -1,10 +1,10 @@
-<mat-toolbar-row class="secondary-toolbar">
-	<strong>Decisions</strong>
+<!-- <mat-toolbar-row class="secondary-toolbar">
+	<span matLine ngClass="mat-boody-2">Decisions</span>
 	<span fxFlex></span>
 
 	<button mat-stroked-button color="primary" routerLink="/create">Create Decision</button>
 
-</mat-toolbar-row>
+</mat-toolbar-row> -->
 
 
 <mat-tab-group mat-stretch-tabs class="mat-elevation-z4">
@@ -12,14 +12,8 @@
 		<ng-template matTabContent>
 			<mat-list>
 				<mat-list-item *ngFor="let decision of decisions">
-					<h3 matLine> {{decision.title}} </h3>
-					<p matLine>
-						<span> {{decision.description}} </span>
-						<br>
-						<span>Date created: {{ decision.decisionId | date }} </span>
-						<br>
-						<span>Decision closed: {{ decision.dateClose |  date }} </span>
-					</p>
+					<span matLine ngClass="mat-boody-1"> {{decision.title}} </span>
+					<span matLine ngClass="mat-caption"><strong> Close date: {{ decision.dateClose |  date }} </strong> </span>
 					<a mat-mini-fab [routerLink]="['/decisions/', decision.decisionId]" color="primary">
 						<mat-icon class="mat-18">how_to_vote</mat-icon>
 					</a>
@@ -29,7 +23,7 @@
 	</mat-tab>
 	<mat-tab label="Private">
 		<ng-template matTabContent>
-			Private Decisions
+			<span matLine ngClass="mat-title">Comming soon...</span>
 		</ng-template>
 	</mat-tab>
 </mat-tab-group>

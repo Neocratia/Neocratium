@@ -7,14 +7,17 @@ import { DecisionsComponent } from './components/decisions/decisions.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { CreateComponent } from './components/decisions/create/create.component';
 import { VoteComponent } from './components/decisions/vote/vote.component';
+import { ForumComponent } from './components/forum/forum.component';
 
 // Guards //
 import { AuthGuard } from './services/core/auth.guard';
+
 
 const routes: Routes = [
 	{ path: '', component: ProfileComponent },
 	{ path: 'decisions', component: DecisionsComponent, canActivate: [AuthGuard] },
 	{ path: 'decisions/:id', component: VoteComponent, canActivate: [AuthGuard] },
+	{ path: 'forum', component: ForumComponent },
 	{ path: 'create', component: CreateComponent, canActivate: [AuthGuard] }
 ];
 

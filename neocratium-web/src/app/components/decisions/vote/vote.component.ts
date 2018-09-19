@@ -20,12 +20,10 @@ export class VoteComponent implements OnInit {
 	private userDoc: AngularFirestoreDocument<User>;
 	private decisionDoc: AngularFirestoreDocument<Decision>;
 
-	user: Observable<Decision>;
+	user: Observable<User>;
 	decision: Observable<Decision>;
 
-	// public userVote = '';
-	// public votes = ['yes', 'no', 'blank'];
-	// loading = true;
+	panelOpenState = false;
 
 	constructor(private activatedRoute: ActivatedRoute, private afs: AngularFirestore) {
 		this.activatedRoute.params.subscribe(params => {
@@ -39,7 +37,7 @@ export class VoteComponent implements OnInit {
 		this.decision = this.decisionDoc.valueChanges();
 
 		this.userDoc = this.afs.doc<User>('users/' + this._userId);
-		this.user = this.decisionDoc.valueChanges();
+		this.user = this.userDoc.valueChanges();
 	}
 
 	get decisionId() {
@@ -49,7 +47,4 @@ export class VoteComponent implements OnInit {
 	get userId() {
 		return this.decisionDoc.ref.id;
 	}
-	// voteChange(voteSelected) {
-	// 	console.log('Vote: ' + voteSelected);
-	// }
 }

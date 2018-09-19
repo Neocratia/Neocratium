@@ -1,7 +1,25 @@
-<div class="container header-spacer" *ngIf="decision | async as d">
-	<h1> {{ d.title }}</h1>
-	<h3>{{ d.description }}</h3>
-
+<div *ngIf="decision | async as d" class="container header-spacer" fxLayout="column">
+	<div class="margin-5">
+		<span ngClass="mat-headline"> {{ d.title }}</span>
+	</div>
+	<div class="margin-5">
+		<span ngClass="mat-body-1" class="margin-5"><strong>Votation ends on: </strong> {{ d.dateClose | date }}</span>
+		<hr>
+	</div>
+	<div class="margin-5">
+		<mat-accordion>
+			<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Description
+					</mat-panel-title>
+					<mat-panel-description>
+						Click to {{panelOpenState ? 'close' : 'open'}}
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<span ngClass="mat-subheading-1"> {{ d.description }}</span>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</div>
 	<app-vote-decision [decisionId]="_decisionId" [userId]="_userId"></app-vote-decision>
-
 </div>
