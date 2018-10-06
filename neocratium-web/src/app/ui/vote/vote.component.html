@@ -1,0 +1,54 @@
+<mat-toolbar-row>
+	<button mat-icon-button [routerLink]="['/decisions']">
+		<mat-icon class="mat-18">backspace</mat-icon>
+	</button>
+</mat-toolbar-row>
+<div *ngIf="decision | async as d" fxLayout="column">
+	<div class="mt-15 pad">
+		<span ngClass="mat-title"> {{ d.title }}</span>
+	</div>
+	<div class="mt-15 pad">
+		<mat-accordion>
+			<mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+				<mat-expansion-panel-header>
+					<mat-panel-title>
+						Descripción
+					</mat-panel-title>
+					<mat-panel-description>
+						Click para {{panelOpenState ? 'cerrar' : 'abrir'}}
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<span ngClass="mat-subheading-1"> {{ d.description }}</span>
+			</mat-expansion-panel>
+		</mat-accordion>
+	</div>
+	<div class="mt-15 pad">
+		<span ngClass="mat-body-1" class="mt-15">Votación abierta hasta {{ d.dateClose | date }}</span>
+		<hr>
+	</div>
+	<div class="mt-15" fxLayout="column">
+		<span ngClass="mat-title">Resultados</span>
+		<mat-grid-list cols="3" rowHeight="100px" style="margin-top: 15px;">
+			<mat-grid-tile [colspan]="1" [rowspan]="1">
+				<div fxLayout="column" class="align-center">
+					<span ngClass="mat-headline"><strong>Si</strong></span>
+					<span ngClass="mat-headline">{{ (avgYes | async) | percent }}</span>
+				</div>
+			</mat-grid-tile>
+			<mat-grid-tile [colspan]="1" [rowspan]="1">
+				<div fxLayout="column" class="align-center">
+					<span ngClass="mat-headline"><strong>No</strong></span>
+					<span ngClass="mat-headline">{{ (avgNo | async) | percent }}</span>
+				</div>
+			</mat-grid-tile>
+			<mat-grid-tile [colspan]="1" [rowspan]="1">
+				<div fxLayout="column" class="align-center">
+					<span ngClass="mat-headline"><strong>Blanco</strong></span>
+					<span ngClass="mat-headline">{{ (avgBlank | async) | percent }}</span>
+				</div>
+			</mat-grid-tile>
+		</mat-grid-list>
+		<hr>
+	</div>
+	<app-vote-decision [decisionId]="_decisionId" [userId]="_userId"></app-vote-decision>
+</div>

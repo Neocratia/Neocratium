@@ -1,0 +1,58 @@
+<div *ngIf="auth.user | async; then authenticated else guest">
+</div>
+
+<ng-template #guest>
+	<div class="align-center mt-15">
+
+		<span ngClass="mat-title">Bienvenido a Neocratium</span>
+		<br>
+		<span ngClass="mat-body-1">Una herramienta para que los ciudadanos decidan que leyes, proyectos y acciones los
+			gobiernos deben trabajar usando la democracia liquida.
+			<br>
+			<br>
+			Una democracia participativa donde cada ciudadano puede votar cada que haya una decisión que tomar, y puede delegar
+			su voto en un/una congresista diferente para cada decisión. El voto de cada congresista tendrá el peso del número de
+			ciudadanos que hayan delegado en él esa decisión.</span>
+		<br>
+		<br>
+		<span ngClass="mat-subheading-2">Ingresa a tu cuenta para empezar</span><br>
+
+		<div class="display-fresh">
+			<button mat-raised-button color="accent" (click)="auth.googleLogin()" class="pad full-width">
+				<i class="fa fa-google"></i> Conectar con Google
+			</button>
+		</div>
+		<div class="display-fresh">
+			<button mat-raised-button color="accent" (click)="auth.facebookLogin()" class="pad full-width">
+				<i class="fa fa-facebook"></i> Conectar con Facebook
+			</button>
+		</div>
+		<div class="display-fresh">
+			<button mat-raised-button color="accent" (click)="auth.twitterLogin()" class="pad full-width">
+				<i class="fa fa-twitter"></i> Conectar con Twitter
+			</button>
+		</div>
+		<a href="neocratia.org" target="_blank" ngClass="mat-subheading-2">
+			Únete al activisimo político digital en Neocratia</a>
+	</div>
+</ng-template>
+
+<ng-template #authenticated>
+	<div class="align-center mt-15">
+		<div *ngIf="auth.user | async as user" class="align-center">
+			<img [src]="user.photoURL" class="avatar"><br>
+			<span ngClass="mat-title">Bienvenido {{user.displayName}},</span><br>
+			<span ngClass="mat-subheading-2">Estos son los datos de tu cuenta:</span><br><br>
+			<span ngClass="mat-body-1"><strong>Email:</strong> {{user.email}}</span><br>
+			<span ngClass="mat-body-1"><strong>ID:</strong> {{user.uid}}</span>
+		</div>
+
+		<div class="display-fresh">
+			<button mat-raised-button color="primary" routerLink="/decisions" class="pad full-width">¡Ve a tomar decisiones!</button>
+		</div>
+		<div class="
+		 display-fresh">
+			<button mat-raised-button color="accent" (click)="auth.signOut()" class="pad full-width">Cerrar sesión</button>
+		</div>
+	</div>
+</ng-template>

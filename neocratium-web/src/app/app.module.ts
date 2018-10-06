@@ -8,7 +8,7 @@ import { FormsModule } from '../../node_modules/@angular/forms';
 // Firebase //
 import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
-import { CoreModule } from './services/core/core.module';
+import { CoreModule } from './core/core.module';
 
 // Material //
 import {
@@ -38,21 +38,21 @@ import { DisqusModule } from 'ngx-disqus';
 // Neocratium Components //
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
-import { NavbarComponent } from './components/shared/navbar/navbar.component';
-import { DecisionsComponent } from './components/decisions/decisions.component';
+import { NavbarComponent } from './core/components/navbar/navbar.component';
+import { DecisionsComponent } from './ui/decisions/decisions.component';
 import { AppRoutingModule } from './/app-routing.module';
-import { VoteComponent } from './components/decisions/vote/vote.component';
-import { VoteDecisionComponent } from './components/vote-decision/vote-decision.component';
-import { DelegateDialogComponent } from './components/vote-decision/delegate-dialog/delegate-dialog.component';
+import { VoteComponent } from './ui/vote/vote.component';
+import { VoteDecisionComponent } from './shared/components/vote-decision/vote-decision.component';
+import { DelegateDialogComponent } from './shared/components/vote-decision/delegate-dialog/delegate-dialog.component';
 
 // Neocratium Services //
-import { DecisionsService } from './services/decisions.service';
-import { ProfileComponent } from './components/profile/profile.component';
-import { CreateComponent } from './components/decisions/create/create.component';
-import { AuthService } from './services/core/auth.service';
-import { NavmenuComponent } from './components/shared/navmenu/navmenu.component';
-import { ForumComponent } from './components/forum/forum.component';
-import { VoteNamePipe } from './pipes/vote-name.pipe';
+import { DecisionsService } from './shared/services/decisions.service';
+import { ProfileComponent } from './ui/profile/profile.component';
+import { CreateComponent } from './ui/create/create.component';
+import { AuthService } from './core/services/auth.service';
+import { NavmenuComponent } from './core/components/navmenu/navmenu.component';
+import { ForumComponent } from './shared/components/forum/forum.component';
+import { VoteNamePipe } from './core/pipes/vote-name.pipe';
 
 @NgModule({
 	declarations: [

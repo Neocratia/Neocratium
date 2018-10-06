@@ -1,0 +1,11 @@
+.main-sidenav {
+	display: flex;
+	position: fixed;
+	// z-index: 0;
+	// top: 0;
+	flex-direction: column;
+	width: 260px;
+	min-width: auto;
+	height: 100%;
+	align-items: left;
+}

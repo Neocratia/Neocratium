@@ -3,21 +3,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Neocratium Components //
-import { DecisionsComponent } from './components/decisions/decisions.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { CreateComponent } from './components/decisions/create/create.component';
-import { VoteComponent } from './components/decisions/vote/vote.component';
-import { ForumComponent } from './components/forum/forum.component';
+import { DecisionsComponent } from './ui/decisions/decisions.component';
+import { ProfileComponent } from './ui/profile/profile.component';
+import { CreateComponent } from './ui/create/create.component';
+import { VoteComponent } from './ui/vote/vote.component';
+import { ForumComponent } from './shared/components/forum/forum.component';
 
 // Guards //
-import { AuthGuard } from './services/core/auth.guard';
+import { AuthGuard } from './core/services/auth.guard';
 
 
 const routes: Routes = [
 	{ path: '', component: ProfileComponent },
 	{ path: 'decisions', component: DecisionsComponent, canActivate: [AuthGuard] },
 	{ path: 'decisions/:id', component: VoteComponent, canActivate: [AuthGuard] },
-	{ path: 'forum', component: ForumComponent },
+	{ path: 'forum', component: ForumComponent, canActivate: [AuthGuard] },
 	{ path: 'create', component: CreateComponent, canActivate: [AuthGuard] }
 ];
 
