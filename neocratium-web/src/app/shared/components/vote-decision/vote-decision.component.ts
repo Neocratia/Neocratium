@@ -20,7 +20,7 @@ export class VoteDecisionComponent implements OnInit {
 	pageId;
 
 	public userVote = '';
-	public votesOptions = ['si', 'no', 'blanco'];
+	public votesOptions = ['yes', 'no', 'blank'];
 
 	constructor(public voteService: VoteService, private dialog: MatDialog, private snackBar: MatSnackBar) {}
 
