@@ -23,11 +23,12 @@ export class VoteService {
 		return votesRef.valueChanges();
 	}
 
-	getRepresentativeVotes(userId, value) {
+	getRepresentativeVotes(userId, decisionId, value) {
 		const docRef = this.afs.collection('votes', ref => ref.where('representative', '==', userId));
 		docRef.ref.get().then(res => {
+			console.log(res);
 			res.docs.forEach(doc => {
-				if (doc.data().representative !== '') {
+				if (doc.data().representative === userId && doc.data().delegated && doc.data().decisionId === decisionId) {
 					this.updateVotes(doc.data(), value);
 				}
 			});
@@ -74,7 +75,7 @@ export class VoteService {
 	setVote(userId: string, decisionId: string, value: string, delegated = false, representative = '') {
 		const votePath = `votes/${userId}_${decisionId}`;
 		const vote: Vote = { userId, decisionId, value, delegated, representative };
-		this.getRepresentativeVotes(userId, value);
+		this.getRepresentativeVotes(userId, decisionId, value);
 		return this.afs.doc(votePath).set(vote);
 	}
 

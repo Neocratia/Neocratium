@@ -32,7 +32,7 @@
 		<mat-grid-list cols="3" rowHeight="100px" style="margin-top: 15px;">
 			<mat-grid-tile [colspan]="1" [rowspan]="1">
 				<div fxLayout="column" class="align-center">
-					<span ngClass="mat-headline"><strong>Si</strong></span>
+					<span ngClass="mat-headline"><strong>Yes</strong></span>
 					<span ngClass="mat-headline">{{ (avgYes | async) | percent }}</span>
 				</div>
 			</mat-grid-tile>
@@ -44,7 +44,7 @@
 			</mat-grid-tile>
 			<mat-grid-tile [colspan]="1" [rowspan]="1">
 				<div fxLayout="column" class="align-center">
-					<span ngClass="mat-headline"><strong>Blanco</strong></span>
+					<span ngClass="mat-headline"><strong>Blank</strong></span>
 					<span ngClass="mat-headline">{{ (avgBlank | async) | percent }}</span>
 				</div>
 			</mat-grid-tile>

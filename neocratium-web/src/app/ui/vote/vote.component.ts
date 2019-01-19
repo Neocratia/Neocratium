@@ -64,7 +64,7 @@ export class VoteComponent implements OnInit {
 			} else {
 				let votesYes = 0;
 				votes.forEach(vote => {
-					if (vote === 'si') {
+					if (vote === 'yes') {
 						votesYes++;
 					}
 				});
@@ -94,7 +94,7 @@ export class VoteComponent implements OnInit {
 			} else {
 				let votesBlank = 0;
 				votes.forEach(vote => {
-					if (vote === 'blanco') {
+					if (vote === 'blank') {
 						votesBlank++;
 					}
 				});
