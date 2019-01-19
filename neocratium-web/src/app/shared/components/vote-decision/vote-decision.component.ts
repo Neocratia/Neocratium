@@ -17,6 +17,8 @@ export class VoteDecisionComponent implements OnInit {
 
 	votes: Observable<any>;
 
+	pageId;
+
 	public userVote = '';
 	public votesOptions = ['si', 'no', 'blanco'];
 
@@ -24,6 +26,7 @@ export class VoteDecisionComponent implements OnInit {
 
 	ngOnInit() {
 		this.votes = this.voteService.getDecisionVotes(this.decisionId);
+		this.pageId = `decisions/${this.decisionId}`;
 	}
 
 	getName(value) {

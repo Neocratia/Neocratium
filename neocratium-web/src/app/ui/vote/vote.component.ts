@@ -23,6 +23,8 @@ export class VoteComponent implements OnInit {
 	avgNo: Observable<any>;
 	avgBlank: Observable<any>;
 
+	totalVotes: Observable<number>;
+
 	private userDoc: AngularFirestoreDocument<User>;
 	private decisionDoc: AngularFirestoreDocument<Decision>;
 
@@ -50,6 +52,11 @@ export class VoteComponent implements OnInit {
 	}
 
 	getResults() {
+
+		this.totalVotes = this.votes.map(arr => {
+			return arr.map(v => v.value).length;
+		});
+
 		this.avgYes = this.votes.map(arr => {
 			const votes = arr.map(v => v.value);
 			if (votes.length === 0) {
