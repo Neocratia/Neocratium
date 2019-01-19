@@ -1,0 +1,45 @@
+<div class="pad">
+	<span ngClass="mat-title">Vote</span>
+
+	<div class="mt-15">
+		<div class="mt-15" fxLayout="column">
+			<!-- <span ngClass="mat-title">Vota o cambia tu voto</span> -->
+			<div class="mt-15">
+				<mat-button-toggle-group #vote="matButtonToggleGroup" [(ngModel)]="userVote" (change)="voteHandler(vote.value)">
+					<mat-button-toggle *ngFor="let vote of votesOptions" [value]="vote" fxFlex fxLayoutAlign="center center">
+						{{ vote | uppercase }}
+					</mat-button-toggle>
+				</mat-button-toggle-group>
+			</div>
+			<div class="display-fresh">
+				<button mat-stroked-button color="primary" (click)="delegateHandler()" class="pad full-width mt-15">
+					<i class="fa fa-address-card"></i> Delegate your decision
+				</button>
+			</div>
+		</div>
+		<hr>
+		<mat-expansion-panel>
+			<mat-expansion-panel-header>
+				Lista de votos
+			</mat-expansion-panel-header>
+			<div>
+				<mat-list *ngFor="let vote of votes | async; let i = index">
+					<mat-list-item *ngIf="!vote.delegated"><span ngClass="mat-body-1">{{ vote.userId | voteName | async }} voted
+							<strong> {{ vote.value }} </strong></span></mat-list-item>
+					<mat-list-item *ngIf="vote.delegated"><span ngClass="mat-body-1">{{ vote.userId | voteName | async }} delegated in
+							{{
+							vote.representative | voteName | async }} </span></mat-list-item>
+					<mat-divider></mat-divider>
+				</mat-list>
+			</div>
+		</mat-expansion-panel>
+	</div>
+
+</div>
+
+<div class="pad">
+	<span ngClass="mat-title">Debate</span>
+
+	<disqus [identifier]="pageId"></disqus>
+
+</div>

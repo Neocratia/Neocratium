@@ -1,0 +1,105 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+
+// UX Structure //
+.header {
+	position: fixed;
+	z-index: 2;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}
+
+.body {
+	position: absolute;
+	width: 100%;
+	margin: 0px !important;
+}
+
+.footer {
+	background-color: #2B2B2B;
+	color: white;
+	position: fixed;
+	z-index: 1;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+}
+
+.header-spacer {
+	padding-top: 50px;
+}
+
+.footer-spacer {
+	padding-top: 80px;
+}
+
+.container {
+	padding: 4%
+}
+
+.display-fresh {
+	display: block;
+	padding: 2%;
+}
+
+.pad {
+	padding: 2%;
+}
+
+.mt-15 {
+	margin-top: 15px;
+}
+
+.full-width {
+	width: 100%;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.mat-button-toggle-label {
+	flex: 1 1 100%;
+	box-sizing: border-box;
+	align-items: center;
+	flex-direction: row;
+	display: flex;
+
+	.mat-button-toggle-label-content {
+			text-align: center;
+			flex: 1 1 100%;
+	}
+}
+
+// Animations //
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+.fast {
+	-webkit-animation-duration: 0.4s;
+	animation-duration: 0.4s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.fadeIn {
+	animation-name: fadeIn;
+}

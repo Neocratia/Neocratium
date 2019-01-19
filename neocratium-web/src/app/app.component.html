@@ -1,0 +1,26 @@
+<mat-sidenav-container>
+	<mat-sidenav #sidenav mode="over" class="main-sidenav">
+		<div ngClass="mat-title" class="pad mt-15">The Neocratia movement</div>
+		<mat-nav-list role="navigation">
+			<a mat-list-item href="https://neocratium.org" target="_blank">Neocratia</a>
+			<a mat-list-item href="https://www.tdcommons.org/cgi/viewcontent.cgi?referer=&httpsredir=1&article=1092&context=dpubs_series"
+			 target="_blank">Google Votes experiment</a>
+			<a mat-list-item href="https://www.neocratia.org/team" target="_blank">Neocratia team</a>
+			<a mat-list-item href="/">Go to your profile</a>
+		</mat-nav-list>
+	</mat-sidenav>
+
+	<mat-sidenav-content>
+
+		<app-navbar [navTitle]="title" (openNav)="sideNav.toggle()" class="header"></app-navbar>
+
+		<div class="header-spacer"></div>
+
+		<router-outlet></router-outlet>
+
+		<div class="header-spacer"></div>
+
+		<app-navmenu class="footer"></app-navmenu>
+	</mat-sidenav-content>
+
+</mat-sidenav-container>

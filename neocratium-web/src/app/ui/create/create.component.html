@@ -1,0 +1,27 @@
+<div class="container align-center">
+	<form class="example-form" (ngSubmit)="onSubmit()" #decisionForm="ngForm">
+
+		<mat-form-field class="example-full-width">
+			<input matInput placeholder="Title" [(ngModel)]="decision.title" name="title" required>
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<textarea matInput placeholder="Description" [(ngModel)]="decision.description" name="description" required></textarea>
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<input matInput placeholder="Country" [(ngModel)]="decision.country" name="country" required>
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width">
+			<input matInput placeholder="City" [(ngModel)]="decision.city" name="city" required>
+		</mat-form-field>
+
+		<mat-form-field class="example-full-width" required>
+			<input matInput [matDatepicker]="dp3" placeholder="Date votation ends" disabled [(ngModel)]="decision.dateClose" name="dateClose" required>
+			<mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+			<mat-datepicker #dp3 disabled="false"></mat-datepicker>
+		</mat-form-field>
+		<button mat-raised-button type="submit" color="primary" [disabled]="!decisionForm.form.valid">Add Decision</button>
+	</form>
+</div>

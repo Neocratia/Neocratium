@@ -1,0 +1,18 @@
+<span ngClass="mat-subheading-1" mat-dialog-title>{{title}}</span>
+<span ngClass="mat-body-1">Elije quien quieras que te represente en esta decisión. Tu voto será el mismo que lo que tu representante vote.</span>
+
+<mat-dialog-content>
+
+	<mat-form-field class="full-width">
+		<mat-select placeholder="Representantes" [(ngModel)]="selectedUser">
+			<mat-option>None</mat-option>
+			<mat-option *ngFor="let user of usersToDelegate" [value]="user">{{user.displayName}}</mat-option>
+		</mat-select>
+	</mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions class="full-width text-center">
+	<button class="mat-raised-button" (click)="close()">Cerrar</button>
+	<button class="mat-raised-button mat-primary" (click)="save()">Delegar</button>
+</mat-dialog-actions>

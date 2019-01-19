@@ -1,0 +1,24 @@
+<mat-tab-group mat-stretch-tabs class="mat-elevation-z4">
+	<mat-tab label="Decisiones públicas">
+		<ng-template matTabContent>
+			<mat-list>
+				<mat-list-item *ngFor="let decision of decisions"
+				[routerLink]="['/decisions/', decision.decisionId]">
+					<span matLine ngClass="mat-boody-1"> {{decision.title}} </span>
+					<span matLine ngClass="mat-caption"><strong>Creator:</strong>
+						{{ decision.userId |  voteName | async }} </span>
+					<span matLine ngClass="mat-caption"><strong>From:</strong> {{ decision.decisionId |  date }} </span>
+					<span matLine ngClass="mat-caption"><strong>To:</strong> {{ decision.dateClose |  date }} </span>
+					<a mat-mini-fab [routerLink]="['/decisions/', decision.decisionId]" color="primary">
+						<mat-icon class="mat-18">how_to_vote</mat-icon>
+					</a>
+				</mat-list-item>
+			</mat-list>
+		</ng-template>
+	</mat-tab>
+	<mat-tab label="Decisiones privadas">
+		<ng-template matTabContent>
+			<span matLine ngClass="mat-title">Comming soon...</span>
+		</ng-template>
+	</mat-tab>
+</mat-tab-group>
